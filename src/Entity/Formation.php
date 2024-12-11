@@ -15,7 +15,7 @@ class Formation
     /**
      * Début de chemin vers les images
      */
-    private const cheminImage = "https://i.ytimg.com/vi/";
+    private static $cheminImage = "https://i.ytimg.com/vi/";
         
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -47,43 +47,37 @@ class Formation
     {
         $this->categories = new ArrayCollection();
     }
-
     public function getId(): ?int
     {
         return $this->id;
     }
-
     public function getPublishedAt(): ?\DateTimeInterface
     {
         return $this->publishedAt;
     }
-
     public function setPublishedAt(?\DateTimeInterface $publishedAt): static
     {
         $this->publishedAt = $publishedAt;
 
         return $this;
     }
-
-    public function getPublishedAtString(): string {
-        if($this->publishedAt == null){
+    public function getPublishedAtString(): string
+    {
+        if ($this->publishedAt == null) {
             return "";
         }
-        return $this->publishedAt->format('d/m/Y');     
-    }      
-    
+        return $this->publishedAt->format('d/m/Y');
+    }
     public function getTitle(): ?string
     {
         return $this->title;
     }
-
     public function setTitle(?string $title): static
     {
         $this->title = $title;
 
         return $this;
     }
-
     public function getDescription(): ?string
     {
         return $this->description;
@@ -95,41 +89,34 @@ class Formation
 
         return $this;
     }
-
     public function getVideoId(): ?string
     {
         return $this->videoId;
     }
-
     public function setVideoId(?string $videoId): static
     {
         $this->videoId = $videoId;
 
         return $this;
     }
-
     public function getMiniature(): ?string
     {
-        return self::cheminImage.$this->videoId."/default.jpg";
+        return self::$cheminImage.$this->videoId."/default.jpg";
     }
-
     public function getPicture(): ?string
     {
-        return self::cheminImage.$this->videoId."/hqdefault.jpg";
+        return self::$cheminImage.$this->videoId."/hqdefault.jpg";
     }
-    
     public function getPlaylist(): ?playlist
     {
         return $this->playlist;
     }
-
     public function setPlaylist(?Playlist $playlist): static
     {
         $this->playlist = $playlist;
 
         return $this;
     }
-
     /**
      * @return Collection<int, Categorie>
      */
@@ -137,7 +124,6 @@ class Formation
     {
         return $this->categories;
     }
-
     public function addCategory(Categorie $category): static
     {
         if (!$this->categories->contains($category)) {
@@ -146,7 +132,6 @@ class Formation
 
         return $this;
     }
-
     public function removeCategory(Categorie $category): static
     {
         $this->categories->removeElement($category);

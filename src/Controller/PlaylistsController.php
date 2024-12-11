@@ -14,29 +14,42 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @author emds
  */
-class PlaylistsController extends AbstractController {
+class PlaylistsController extends AbstractController
+{
     
     /**
-     * 
-     * @var PlaylistRepository
-     */
+    *
+    * @var PlaylistRepository
+    */
     private $playlistRepository;
-    
+     /**
+     *
+     * @var String $PlaylistRenderDocument
+     */
+    private $playlistsRenderDocument = "pages/playlists.html.twig";
     /**
-     * 
+     *
+     * @var String playListRenderDocument
+     */
+    private $playlistRenderDocument = "pages/playlist.html.twig";
+    /**
+     *
      * @var FormationRepository
      */
     private $formationRepository;
     
     /**
-     * 
+     *
      * @var CategorieRepository
      */
-    private $categorieRepository;    
-    
-    function __construct(PlaylistRepository $playlistRepository, 
-            CategorieRepository $categorieRepository,
-            FormationRepository $formationRespository) {
+    private $categorieRepository;
+
+    public function __construct(
+        PlaylistRepository $playlistRepository,
+        CategorieRepository $categorieRepository,
+        FormationRepository $formationRespository
+        )
+    {
         $this->playlistRepository = $playlistRepository;
         $this->categorieRepository = $categorieRepository;
         $this->formationRepository = $formationRespository;
@@ -47,52 +60,56 @@ class PlaylistsController extends AbstractController {
      * @return Response
      */
     #[Route('/playlists', name: 'playlists')]
-    public function index(): Response{
+    public function index(): Response
+    {
         $playlists = $this->playlistRepository->findAllOrderByName('ASC');
         $categories = $this->categorieRepository->findAll();
-        return $this->render("pages/playlists.html.twig", [
+        return $this->render($this->playlistsRenderDocument, [
             'playlists' => $playlists,
-            'categories' => $categories            
+            'categories' => $categories
         ]);
     }
 
     #[Route('/playlists/tri/{champ}/{ordre}', name: 'playlists.sort')]
-    public function sort($champ, $ordre): Response{
-        switch($champ){
+    public function sort($champ, $ordre): Response
+    {
+        switch ($champ) {
             case "name":
                 $playlists = $this->playlistRepository->findAllOrderByName($ordre);
                 break;
+            default: break;
         }
         $categories = $this->categorieRepository->findAll();
-        return $this->render("pages/playlists.html.twig", [
+        return $this->render($this->playlistRenderDocument, [
             'playlists' => $playlists,
-            'categories' => $categories            
+            'categories' => $categories
         ]);
-    }          
+    }
 
     #[Route('/playlists/recherche/{champ}/{table}', name: 'playlists.findallcontain')]
-    public function findAllContain($champ, Request $request, $table=""): Response{
+    public function findAllContain($champ, Request $request, $table=""): Response
+    {
         $valeur = $request->get("recherche");
         $playlists = $this->playlistRepository->findByContainValue($champ, $valeur, $table);
         $categories = $this->categorieRepository->findAll();
-        return $this->render("pages/playlists.html.twig", [
+        return $this->render($this->playlistRenderDocument, [
             'playlists' => $playlists,
-            'categories' => $categories,            
+            'categories' => $categories,
             'valeur' => $valeur,
             'table' => $table
         ]);
-    }  
+    }
 
     #[Route('/playlists/playlist/{id}', name: 'playlists.showone')]
-    public function showOne($id): Response{
+    public function showOne($id): Response
+    {
         $playlist = $this->playlistRepository->find($id);
         $playlistCategories = $this->categorieRepository->findAllForOnePlaylist($id);
         $playlistFormations = $this->formationRepository->findAllForOnePlaylist($id);
-        return $this->render("pages/playlist.html.twig", [
+        return $this->render($this->playlistRenderDocument, [
             'playlist' => $playlist,
             'playlistcategories' => $playlistCategories,
             'playlistformations' => $playlistFormations
-        ]);        
-    }       
-    
+        ]);
+    }
 }
