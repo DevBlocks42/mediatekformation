@@ -77,10 +77,13 @@ class PlaylistsController extends AbstractController
             case "name":
                 $playlists = $this->playlistRepository->findAllOrderByName($ordre);
                 break;
+            case "count":
+                $playlists = $this->playlistRepository->findAllOrderByCount($ordre);
+                break;
             default: break;
         }
         $categories = $this->categorieRepository->findAll();
-        return $this->render($this->playlistRenderDocument, [
+        return $this->render($this->playlistsRenderDocument, [
             'playlists' => $playlists,
             'categories' => $categories
         ]);

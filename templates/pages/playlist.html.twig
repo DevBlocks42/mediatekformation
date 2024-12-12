@@ -15,6 +15,7 @@
         </div>
         <div class="col">
             <!-- boucle sur l'affichage des formations -->
+            <em>Il y a {{ playlistformations|length }} formations dans cette playlist</em>
             {% for formation in playlistformations %}
                 <div class="row mt-1">
                     <div class="col-md-auto">
