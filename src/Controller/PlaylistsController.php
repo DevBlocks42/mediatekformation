@@ -95,7 +95,7 @@ class PlaylistsController extends AbstractController
         $valeur = $request->get("recherche");
         $playlists = $this->playlistRepository->findByContainValue($champ, $valeur, $table);
         $categories = $this->categorieRepository->findAll();
-        return $this->render($this->playlistRenderDocument, [
+        return $this->render($this->playlistsRenderDocument, [
             'playlists' => $playlists,
             'categories' => $categories,
             'valeur' => $valeur,

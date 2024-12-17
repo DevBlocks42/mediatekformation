@@ -20,7 +20,7 @@ class FormationsController extends AbstractController
     *
     * @var FormationRepository
     */
-    private $formationRepository;
+    protected $formationRepository;
     /**
     *
     * @var $formationRenderPage:String
@@ -30,7 +30,7 @@ class FormationsController extends AbstractController
     *
     * @var CategorieRepository
     */
-    private $categorieRepository;
+    protected $categorieRepository;
     
     public function __construct(FormationRepository $formationRepository, CategorieRepository $categorieRepository)
     {
@@ -40,39 +40,62 @@ class FormationsController extends AbstractController
     }
     
     #[Route('/formations', name: 'formations')]
-    public function index(): Response
+    public function index($path=null): Response
     {
         $formations = $this->formationRepository->findAll();
         $categories = $this->categorieRepository->findAll();
-        return $this->render($this->formationRenderPage, [
+        if ($path === null) {
+            return $this->render($this->formationRenderPage, [
             'formations' => $formations,
             'categories' => $categories
-        ]);
+            ]);
+        } else {
+            return $this->render("pages/backoffice/formations.html.twig", [
+            'formations' => $formations,
+            'categories' => $categories
+            ]);
+        }
     }
 
     #[Route('/formations/tri/{champ}/{ordre}/{table}', name: 'formations.sort')]
-    public function sort($champ, $ordre, $table=""): Response
+    public function sort($champ, $ordre, $table="", $path=null): Response
     {
         $formations = $this->formationRepository->findAllOrderBy($champ, $ordre, $table);
         $categories = $this->categorieRepository->findAll();
-        return $this->render($this->formationRenderPage, [
-            'formations' => $formations,
-            'categories' => $categories
-        ]);
+        if ($path === null) {
+            return $this->render($this->formationRenderPage, [
+                'formations' => $formations,
+                'categories' => $categories
+            ]);
+        } else {
+           return $this->render($path, [
+                'formations' => $formations,
+                'categories' => $categories
+            ]);
+        }
     }
 
     #[Route('/formations/recherche/{champ}/{table}', name: 'formations.findallcontain')]
-    public function findAllContain($champ, Request $request, $table=""): Response
+    public function findAllContain($champ, Request $request, $table="", $path=null): Response
     {
         $valeur = $request->get("recherche");
         $formations = $this->formationRepository->findByContainValue($champ, $valeur, $table);
         $categories = $this->categorieRepository->findAll();
-        return $this->render($this->formationRenderPage, [
-            'formations' => $formations,
-            'categories' => $categories,
-            'valeur' => $valeur,
-            'table' => $table
-        ]);
+        if ($path === null) {
+            return $this->render($this->formationRenderPage, [
+                'formations' => $formations,
+                'categories' => $categories,
+                'valeur' => $valeur,
+                'table' => $table
+            ]);
+        } else {
+            return $this->render($path, [
+                'formations' => $formations,
+                'categories' => $categories,
+                'valeur' => $valeur,
+                'table' => $table
+            ]);
+        }
     }
 
     #[Route('/formations/formation/{id}', name: 'formations.showone')]

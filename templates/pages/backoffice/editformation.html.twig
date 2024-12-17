@@ -1,0 +1,14 @@
+{% extends "basefront_backoffice.html.twig" %}
+{% block body %}
+    {% for message in app.flashes('formation_error') %}
+        <div class="flash-notice text-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('formation_success') %}
+        <div class="flash-notice text-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {{ form(formation_form) }}
+{% endblock %}

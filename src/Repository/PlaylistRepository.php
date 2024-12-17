@@ -49,6 +49,11 @@ class PlaylistRepository extends ServiceEntityRepository
      */
     public function findAllOrderByCount($ordre) : array
     {
+        /*On test les valeurs possibles du paramètre $ordre, si sa valeur n'est pas l'une des deux possibles,
+         * on choisi arbitrairement d'affecter la valeur 'ASC' à l'ordre, de cette façon il n'y a pas
+         * besoin de paramètrer les requêtes pour éviter les injections sql
+         */
+        ($ordre === "ASC" || $ordre === "DESC") ? $ordre : $ordre = "ASC";
         return $this->createQueryBuilder('p')->addSelect('count(p.id) as HIDDEN cnt')->leftjoin('p.formations', 'f')
                         ->groupBy('p.id')
                         ->orderBy('cnt', $ordre)

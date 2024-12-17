@@ -1,0 +1,111 @@
+{% extends "pages/formations.html.twig" %}
+{% block top %}
+    <div class="container">
+        <!-- titre -->
+        <div class="text-left">
+            <img alt='' src="{{ app.request.getBasePath()~'/banniere.jpg' }}" >
+        </div>
+        <!-- menu -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('accueil_backoffice') }}">Accueil</a>
+                    </li>     
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('backoffice_formations') }}">Formations</a>
+                    </li>  
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Playlists</a>
+                    </li>  
+                </ul>
+            </div>
+        </nav>        
+    </div>  
+{% endblock %}
+{% block actions %}
+    <a class="btn btn-danger" href="{{ path('backoffice_formation.addone') }}""><i class="bi bi-plus-circle-fill"></i> Ajouter une formation</a>
+{% endblock %}
+{% block formation_sort %}
+    <a href="{{ path('backoffice_formations.sort', {champ:'title', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
+    <a href="{{ path('backoffice_formations.sort', {champ:'title', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>
+    <form class="form-inline mt-1" method="POST" action="{{ path('backoffice_formations.findallcontain', {champ:'title'}) }}">
+        <div class="form-group mr-1 mb-2">
+            <input type="text" class="sm" name="recherche" 
+                   value="{% if valeur|default and not table|default %}{{ valeur }}{% endif %}">
+            <input type="hidden" name="_token" value="{{ csrf_token('filtre_title') }}">
+            <button type="submit" class="btn btn-info mb-2 btn-sm">filtrer</button>
+        </div>
+    </form>
+{% endblock %}
+{% block formation_playlist_sort %}
+    <a href="{{ path('backoffice_formations.sort', {table:'playlist', champ:'name', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
+    <a href="{{ path('backoffice_formations.sort', {table:'playlist', champ:'name', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>
+    <form class="form-inline mt-1" method="POST" action="{{ path('backoffice_formations.findallcontain', {champ:'name', table:'playlist'}) }}">
+        <div class="form-group mr-1 mb-2">
+            <input type="text" class="sm" name="recherche" 
+                   value="{% if valeur|default and table|default and table=='playlist' %}{{ valeur }}{% endif %}">
+            <input type="hidden" name="_token" value="{{ csrf_token('filtre_name') }}">
+            <button type="submit" class="btn btn-info mb-2 btn-sm">filtrer</button>
+        </div>
+    </form>    
+{% endblock %}
+{% block formation_categorie_sort %}
+    <form class="form-inline mt-1" method="POST" action="{{ path('backoffice_formations.findallcontain', {champ:'id', table:'categories'}) }}">
+        <select class="form-select form-select-sm" name="recherche" id="recherche" onchange="this.form.submit()">
+            <option value=""></option>
+            {% for categorie in categories %}
+            <option 
+                {% if valeur|default and valeur==categorie.id %} 
+                    selected
+                {% endif %} 
+                value="{{ categorie.id }}">{{ categorie.name }}
+            </option>
+            {% endfor %}
+            </select>                    
+    </form>
+{% endblock %}
+{% block formation_date_sort %}
+    <a href="{{ path('backoffice_formations.sort', {champ:'publishedAt', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
+    <a href="{{ path('backoffice_formations.sort', {champ:'publishedAt', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>                    
+{% endblock %}
+{% block table_body %}
+    {% for formation in formations %}
+        <tr class="align-middle">
+            <td>
+                <h5 class="text-info">
+                    {{ formation.title }}
+                </h5>
+            </td>
+            <td class="text-left">
+                {{ formation.playlist.name }}                  
+            </td>                    
+            <td class="text-left">
+                {% for categorie in formation.categories %}
+                    {{ categorie.name }}<br />
+                {% endfor %}
+            </td>                    
+            <td class="text-center">
+                {{ formation.publishedatstring }}
+            </td>
+            
+            <td class="text-center">
+                {% if formation.miniature %}
+                    <a href="{{ path('formations.showone', {id:formation.id}) }}">
+                        <img alt = '' src="{{ formation.miniature }}">
+                    </a>
+                {% endif %}
+            </td>
+            <td class = 'text-center'>
+                <a onclick = "confirm('Êtes-vous certain de vouloir supprimer cette formation ?')" href = '{{ path('backoffice_formation.deleteone', {id: formation.id}) }}'>
+                    <em class="bi bi-trash h2"></em>
+                </a>
+            </td>
+            <td class = 'text-center'>
+                <a href ='{{ path('backoffice_formation.editone', {id: formation.id}) }}'>
+                    <em class="bi bi-pencil-square h2"></em>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}

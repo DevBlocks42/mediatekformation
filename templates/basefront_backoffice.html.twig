@@ -1,0 +1,26 @@
+{% extends "basefront.html.twig" %}
+
+{% block top %}
+    <div class="container">
+        <!-- titre -->
+        <div class="text-left">
+            <img alt='' src="{{ app.request.getBasePath()~'/banniere.jpg' }}" >
+        </div>
+        <!-- menu -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('accueil_backoffice') }}">Accueil</a>
+                    </li>     
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('backoffice_formations') }}">Formations</a>
+                    </li>  
+                    <li class="nav-item">
+                        <a class="nav-link" href="/toBeDefined">Playlists</a>
+                    </li>  
+                </ul>
+            </div>
+        </nav>        
+    </div>
+{% endblock %}
