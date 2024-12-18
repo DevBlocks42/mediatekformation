@@ -33,6 +33,10 @@ class FormationType extends AbstractType
                     'required' => false,
                     'label' => 'Description'
                 ])
+                ->add("videoid", TextType::class, [
+                    'required' => true,
+                    'label' => 'Identifiant vidéo'
+                ])
                 ->add("categories", EntityType::class, [
                     'class' => \App\Entity\Categorie::class,
                     'choice_label' => 'name',
