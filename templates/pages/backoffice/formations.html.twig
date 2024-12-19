@@ -16,7 +16,7 @@
                         <a class="nav-link" href="{{ path('backoffice_formations') }}">Formations</a>
                     </li>  
                     <li class="nav-item">
-                        <a class="nav-link" href="">Playlists</a>
+                        <a class="nav-link" href="{{ path('backoffice_playlists') }}">Playlists</a>
                     </li>  
                 </ul>
             </div>
@@ -24,7 +24,7 @@
     </div>  
 {% endblock %}
 {% block actions %}
-    <a class="btn btn-danger" href="{{ path('backoffice_formation.addone') }}""><i class="bi bi-plus-circle-fill"></i> Ajouter une formation</a>
+    <a class="btn btn-success" href="{{ path('backoffice_formation.addone') }}"><i class="bi bi-plus-circle-fill"></i> Ajouter une formation</a>
 {% endblock %}
 {% block formation_sort %}
     <a href="{{ path('backoffice_formations.sort', {champ:'title', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
@@ -98,12 +98,12 @@
             </td>
             <td class = 'text-center'>
                 <a onclick = "confirm('Êtes-vous certain de vouloir supprimer cette formation ?')" href = '{{ path('backoffice_formation.deleteone', {id: formation.id}) }}'>
-                    <em class="bi bi-trash h2"></em>
+                    <em class="bi bi-trash h2 btn-danger"></em>
                 </a>
             </td>
             <td class = 'text-center'>
                 <a href ='{{ path('backoffice_formation.editone', {id: formation.id}) }}'>
-                    <em class="bi bi-pencil-square h2"></em>
+                    <em class="bi bi-pencil-square h2 btn-success"></em>
                 </a>
             </td>
         </tr>

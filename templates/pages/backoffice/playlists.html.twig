@@ -1,5 +1,39 @@
-{% extends "baseback.html.twig" %}
+{% extends "basefront_backoffice_playlists.html.twig" %}
 {% block title %}Gestionnaire de playlist{% endblock %}
-{% block body %}
-    
+
+{% block add_playlist %}
+    {% for message in app.flashes('playlist_error') %}
+        <div class="flash-notice text-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('playlist_success') %}
+        <div class="flash-notice text-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <a href="{{ path('backoffice_playlists.addoreditone', {id: null}) }}" class="btn btn-success"><em class="bi bi-plus-circle-fill"></em> Ajouter une playlist</a>
+{% endblock %}
+{% block edit_links %}
+    <a onclick="confirm('Êtes-vous sûr de vouloir supprimer cette playlist ?')" href="{{ path('backoffice_playlists.deleteone', {id: playlists[k].id}) }}"><em class="bi bi-trash h2 btn-danger"></em></a>
+    <a href="{{ path('backoffice_playlists.addoreditone', {id: playlists[k].id}) }}"><em class="bi bi-pencil-square h2 btn-success"></em></a>
+{% endblock %}
+{% block playlists_sort_and_filter %}
+    <a href="{{ path('backoffice_playlists.sort', {champ:'name', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
+    <a href="{{ path('backoffice_playlists.sort', {champ:'name', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>
+    <form class="form-inline mt-1" method="POST" action="{{ path('backoffice_playlists.findallcontain', {champ:'name'}) }}">
+        <div class="form-group mr-1 mb-2">
+            <input type="text" class="sm" name="recherche" 
+                value="{% if valeur|default and not table|default %}{{ valeur }}{% endif %}">
+            <input type="hidden" name="_token" value="{{ csrf_token('filtre_name') }}">
+            <button type="submit" class="btn btn-info mb-2 btn-sm">filtrer</button>
+        </div>
+    </form>
+{% endblock %}
+{% block playlists_sort_count %}
+    <a href="{{ path('backoffice_playlists.sort', {champ:'count', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
+    <a href="{{ path('backoffice_playlists.sort', {champ:'count', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>
+{% endblock %}
+{% block playlists_categories_filter %}
+    <form class="form-inline mt-1" method="POST" action="{{ path('backoffice_playlists.findallcontain', {champ:'id', table:'categories'}) }}">
 {% endblock %}

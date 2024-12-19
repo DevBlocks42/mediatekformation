@@ -12,7 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Formation;
 
 /**
- * Description of FormationType
+ * Classe réprésentant le formulaire associé à l'entité Formation
  *
  * @author sysadmin
  */

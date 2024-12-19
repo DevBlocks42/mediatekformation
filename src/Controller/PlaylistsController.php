@@ -21,28 +21,28 @@ class PlaylistsController extends AbstractController
     *
     * @var PlaylistRepository
     */
-    private $playlistRepository;
+    protected $playlistRepository;
      /**
      *
      * @var String $PlaylistRenderDocument
      */
-    private $playlistsRenderDocument = "pages/playlists.html.twig";
+    protected $playlistsRenderDocument = "pages/playlists.html.twig";
     /**
      *
      * @var String playListRenderDocument
      */
-    private $playlistRenderDocument = "pages/playlist.html.twig";
+    protected $playlistRenderDocument = "pages/playlist.html.twig";
     /**
      *
      * @var FormationRepository
      */
-    private $formationRepository;
+    protected $formationRepository;
     
     /**
      *
      * @var CategorieRepository
      */
-    private $categorieRepository;
+    protected $categorieRepository;
 
     public function __construct(
         PlaylistRepository $playlistRepository,
