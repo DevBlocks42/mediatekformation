@@ -1,0 +1,47 @@
+{% extends "basefront_backoffice.html.twig" %}
+{% block body %}
+    {% for message in app.flashes('categorie_success') %}
+        <div class="flash-notice text-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('categorie_error') %}
+        <div class="flash-notice text-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {{ form(cat_form) }}
+    <table class="table table-striped">
+        <caption>Liste des catégories</caption>
+        <thead>
+            <tr>
+                <th class="text-left align-top" scope="col">
+                    Titre
+                </th>
+                <th class="text-left align-top" scope="col">
+                    Nombre de formations
+                </th>
+                <th class="text-left align-top" scope="col">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for categorie in categories %}
+                <tr class="align-middle">
+                    <td>
+                        {{ categorie.name }}
+                    </td>
+                    <td>
+                        {{ categorie.formations|length }}
+                    </td>
+                    <td>
+                        <a onclick = "confirm('Êtes-vous certain de vouloir supprimer cette catégorie ?')" href = '{{ path('backoffice_categories.deleteone', {id: categorie.id}) }}'>
+                            <em class="bi bi-trash h2 btn-danger"></em>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

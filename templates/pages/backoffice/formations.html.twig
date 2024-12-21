@@ -18,13 +18,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('backoffice_playlists') }}">Playlists</a>
                     </li>  
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('backoffice_categories') }}">Catégories</a>
+                    </li> 
                 </ul>
             </div>
         </nav>        
     </div>  
 {% endblock %}
 {% block actions %}
-    <a class="btn btn-success" href="{{ path('backoffice_formation.addone') }}"><i class="bi bi-plus-circle-fill"></i> Ajouter une formation</a>
+    <a class="btn btn-success" href="{{ path('backoffice_formation.addone') }}"><em class="bi bi-plus-circle-fill"></em> Ajouter une formation</a>
 {% endblock %}
 {% block formation_sort %}
     <a href="{{ path('backoffice_formations.sort', {champ:'title', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>

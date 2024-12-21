@@ -109,12 +109,11 @@ class BackofficePlaylistsController extends PlaylistsController
                 '[!] La playlist n\'a pas pu être supprimée c'
                 . 'ar elle est rattachée à une ou plusieurs formations.'
             );
-            return $this->redirectToRoute("backoffice_playlists");
         } else {
             $this->playlistRepository->remove($playlist);
             $this->addFlash('playlist_success', 'La playlist a bien été supprimée.');
-            return $this->redirectToRoute('backoffice_playlists');
         }
+        return $this->redirectToRoute("backoffice_playlists");
     }
 
 }

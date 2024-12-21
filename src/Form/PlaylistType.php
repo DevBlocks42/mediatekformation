@@ -29,7 +29,7 @@ class PlaylistType extends AbstractType
     public function buildForm(FormBuilderInterface $formBuilder, array $options) : void
     {
         $formations = $options['formations'];
-        if(count($formations) > 0) {
+        if (count($formations) > 0) {
             $formBuilder
                     ->add('name', TextType::class, [
                         'required' => true,
@@ -52,14 +52,6 @@ class PlaylistType extends AbstractType
                             'checked' => true
                         ]
                     ])
-                    /*->add('formations', EntityType::class, [
-                        'class' => Formation::class,
-                        'choice_label' => 'title',
-                        'data' => $formations,
-                        'multiple' => true,
-                        'required' => false,
-                        'disabled' => true
-                    ])*/
                     ->add('submit', SubmitType::class, [
                         'label' => 'Valider'
                     ]);
@@ -69,9 +61,10 @@ class PlaylistType extends AbstractType
                         'required' => true,
                         'label' => 'Nom de la playlist'
                     ])
-                    ->add('description', TextType::class, [
+                    ->add('description', TextareaType::class, [
                         'required' => false,
-                        'label' => "Description"
+                        'label' => "Description",
+                        'attr' => array('rows' => '15')
                     ])
                     ->add('submit', SubmitType::class, [
                         'label' => 'Valider'
