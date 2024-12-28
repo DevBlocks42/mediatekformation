@@ -31,14 +31,22 @@ class FormationsController extends AbstractController
     * @var CategorieRepository
     */
     protected $categorieRepository;
-    
+    /**
+     *
+     * @param FormationRepository $formationRepository
+     * @param CategorieRepository $categorieRepository
+     */
     public function __construct(FormationRepository $formationRepository, CategorieRepository $categorieRepository)
     {
         $this->formationRenderPage = "pages/formations.html.twig";
         $this->formationRepository = $formationRepository;
         $this->categorieRepository= $categorieRepository;
     }
-    
+    /**
+     *
+     * @param type $path
+     * @return Response
+     */
     #[Route('/formations', name: 'formations')]
     public function index($path=null): Response
     {
@@ -56,7 +64,14 @@ class FormationsController extends AbstractController
             ]);
         }
     }
-
+    /**
+     *
+     * @param type $champ
+     * @param type $ordre
+     * @param type $table
+     * @param type $path
+     * @return Response
+     */
     #[Route('/formations/tri/{champ}/{ordre}/{table}', name: 'formations.sort')]
     public function sort($champ, $ordre, $table="", $path=null): Response
     {
@@ -74,7 +89,14 @@ class FormationsController extends AbstractController
             ]);
         }
     }
-
+    /**
+     *
+     * @param type $champ
+     * @param Request $request
+     * @param type $table
+     * @param type $path
+     * @return Response
+     */
     #[Route('/formations/recherche/{champ}/{table}', name: 'formations.findallcontain')]
     public function findAllContain($champ, Request $request, $table="", $path=null): Response
     {
@@ -97,7 +119,11 @@ class FormationsController extends AbstractController
             ]);
         }
     }
-
+    /**
+     *
+     * @param type $id
+     * @return Response
+     */
     #[Route('/formations/formation/{id}', name: 'formations.showone')]
     public function showOne($id): Response
     {

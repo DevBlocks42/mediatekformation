@@ -18,6 +18,12 @@ use App\Entity\Formation;
  */
 class FormationType extends AbstractType
 {
+    /**
+     *
+     * @param FormBuilderInterface $formBuilder
+     * @param array $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $formBuilder, array $options) : void
     {
         $categories = $options['categories'];
@@ -55,6 +61,11 @@ class FormationType extends AbstractType
                     'label' => "Valider"
                 ]);
     }
+    /**
+     *
+     * @param OptionsResolver $resolver
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

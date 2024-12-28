@@ -10,11 +10,18 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
 class Categorie
 {
+    /**
+     *
+     * @var int|null
+     */
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
+    /**
+     *
+     * @var string|null
+     */
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $name = null;
 
@@ -28,17 +35,27 @@ class Categorie
     {
         $this->formations = new ArrayCollection();
     }
-
+    /**
+     *
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
-
+    /**
+     *
+     * @return string|null
+     */
     public function getName(): ?string
     {
         return $this->name;
     }
-
+    /**
+     *
+     * @param string|null $name
+     * @return static
+     */
     public function setName(?string $name): static
     {
         $this->name = $name;
@@ -53,7 +70,11 @@ class Categorie
     {
         return $this->formations;
     }
-
+    /**
+     *
+     * @param Formation $formation
+     * @return static
+     */
     public function addFormation(Formation $formation): static
     {
         if (!$this->formations->contains($formation)) {
@@ -63,7 +84,11 @@ class Categorie
 
         return $this;
     }
-
+    /**
+     *
+     * @param Formation $formation
+     * @return static
+     */
     public function removeFormation(Formation $formation): static
     {
         if ($this->formations->removeElement($formation)) {

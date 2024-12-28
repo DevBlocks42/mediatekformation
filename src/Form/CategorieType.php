@@ -10,12 +10,18 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Categorie;
 
 /**
- * Description of CategorieType
+ * Classe représentant le formulaire associé à l'entité Categorie
  *
  * @author sysadmin
  */
 class CategorieType extends AbstractType
 {
+    /**
+     *
+     * @param FormBuilderInterface $formBuilder
+     * @param array $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $formBuilder, array $options) : void
     {
         $formBuilder
@@ -26,6 +32,11 @@ class CategorieType extends AbstractType
                     'label' => 'Ajouter'
                 ]);
     }
+    /**
+     *
+     * @param OptionsResolver $resolver
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

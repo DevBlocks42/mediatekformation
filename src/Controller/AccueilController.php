@@ -27,7 +27,10 @@ class AccueilController extends AbstractController
     {
         $this->repository = $repository;
     }
-    
+    /**
+     *
+     * @return Response
+     */
     #[Route('/', name: 'accueil')]
     public function index(): Response
     {
@@ -36,7 +39,10 @@ class AccueilController extends AbstractController
             'formations' => $formations
         ]);
     }
-    
+    /**
+     *
+     * @return Response
+     */
     #[Route('/cgu', name: 'cgu')]
     public function cgu(): Response
     {

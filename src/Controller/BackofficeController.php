@@ -27,6 +27,10 @@ class BackofficeController extends AbstractController
     {
         $this->repository = $repository;
     }
+    /**
+     *
+     * @return Response
+     */
     #[Route('/backoffice', name: 'accueil_backoffice')]
     public function index(): Response
     {

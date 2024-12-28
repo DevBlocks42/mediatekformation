@@ -99,7 +99,7 @@ class BackofficeFormationsController extends FormationsController
             $submitDate = $formation->getPublishedAt();
             //On s'assure que la date saisie est bien antérieure à la date actuelle
             if (time() - strtotime($submitDate->format('m/d/Y')) > 0) {
-                $this->formationRepository->getEntityManager()->flush();
+                $this->formationRepository->edit($formation);
                 $this->addFlash('formation_success', 'La formation a bien été modifiée.');
             } else {
                 $this->addFlash('formation_error', '[!] La date ne peut pas être postérieure à la date actuelle.');

@@ -65,6 +65,12 @@ class BackofficePlaylistsController extends PlaylistsController
     {
         return parent::findAllContain($champ, $request, $table);
     }
+    /**
+     *
+     * @param Request $request
+     * @param type $id
+     * @return Response
+     */
     #[Route('/backoffice/playlists/addoreditplaylist/{id?}', name: 'backoffice_playlists.addoreditone')]
     public function addOrEditOne(Request $request, $id=null): Response
     {

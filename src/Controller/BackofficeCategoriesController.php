@@ -32,6 +32,7 @@ class BackofficeCategoriesController extends AbstractController
     }
     /**
      *
+     * @param Request $request
      * @return Response
      */
     #[Route('/backoffice/categories', name: 'backoffice_categories')]
@@ -61,6 +62,11 @@ class BackofficeCategoriesController extends AbstractController
             'cat_form' => $categorieType->createView()
         ]);
     }
+    /**
+     *
+     * @param type $id
+     * @return Response
+     */
     #[Route('/backoffice/categories/delete/{id}', name: 'backoffice_categories.deleteone')]
     public function deleteOne($id): Response
     {
