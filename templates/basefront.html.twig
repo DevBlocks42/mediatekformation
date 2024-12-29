@@ -23,6 +23,9 @@
                     </li>
                     {% if app.user %}
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ path('accueil_backoffice') }}">Backoffice</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
                         </li>
                     {% else %}
