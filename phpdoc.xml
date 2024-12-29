@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+    <title>Mediatekformation</title>
+    <parser>
+        <target>phpdocs/output</target>
+        <extensions>
+            <extension>module</extension>
+            <extension>inc</extension>
+            <extension>php</extension>
+        </extensions>
+    </parser>
+    <transformer>
+        <target>docs</target>
+    </transformer>
+    <files>
+        <directory>src</directory> 
+        <ignore>tests/*</ignore>
+        <ignore>assets/*</ignore>
+        <ignore>bin/*</ignore>
+        <ignore>config/*</ignore>
+        <ignore>mediatekformation/*</ignore>
+        <ignore>migrations/*</ignore>
+        <ignore>nbproject/*</ignore>
+        <ignore>public/*</ignore>
+        <ignore>src/DataFixtures/*</ignore>
+        <ignore>templates/*</ignore>
+        <ignore>translations/*</ignore>
+        <ignore>var/*</ignore>
+        <ignore>vendor/*</ignore>
+    </files>
+</phpdoc>
