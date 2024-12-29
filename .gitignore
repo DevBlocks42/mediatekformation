@@ -25,3 +25,7 @@
 ###< symfony/asset-mapper ###
 
 /phpdocs/output
+/build/api
+/bin
+/drivers
+/.phpdoc/
