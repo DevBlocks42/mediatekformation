@@ -7,6 +7,8 @@
 /public/bundles/
 /var/
 /vendor/
+/.env
+/templates/
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###
