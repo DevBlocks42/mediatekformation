@@ -4,6 +4,8 @@ Application web permettant la consultation et la mise en ligne de vidéos d'auto
 
 Lien de l'application d'origine : https://github.com/CNED-SLAM/mediatekformation
 
+Lien pour tester l'application en direct : https://mediatek-formations.42web.io/
+
 # Présentation des fonctionalités ajoutées
 ## Backoffice
 
