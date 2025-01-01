@@ -58,6 +58,8 @@ Pour installer cette application web, il est nécéssaire d'avoir un serveur web
 
 Une fois installé, il faut importer la base de données au niveau du SGBD, on peut utiliser phpmyadmin ou l'interface de commande MySQL/Mariadb pour cela.
 
+Ensuite, on peut copier/coller les fichiers du projet dans le répertoire de notre serveur web.
+
 À ce stade, l'application est preque prête, il faut cependant installer tous les bundles et extensions de Symfony et PHP, pour cela on utilise composer : 
 
   composer install
