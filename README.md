@@ -1,5 +1,3 @@
-#Installation
-##Local
-  - LAMP
-##Distant
-  - Déploiement continu
+# Mediatekformation
+## Présentation des fonctionalités ajoutées
+### Backoffice
