@@ -78,5 +78,5 @@ Les étapes d'installation sur un site distant sont les mêmes. Cependant, il es
 
 - Si l'hébergeur ne donne pas d'accès SSH au serveur, il faudra produire le dossier vendor localement (avec composer), puis le téléverser vers le serveur via FTP.
 
-- Dans le cas d'un déploiement continu avec Github, il ne faut pas inclure le fichier .env final qui contient des identifiants pour la base de données, il faudra le téléverser manuellement via FTP (ou autre).
+- Dans le cas d'un déploiement continu avec Github, il ne faut pas inclure le fichier .env final qui contient des identifiants pour la base de données, il faudra le téléverser manuellement via FTP (ou autre protocole supporté par l'hébergeur).
 
