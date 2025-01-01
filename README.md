@@ -74,7 +74,7 @@ Le site devrait normalement être opérationnel.
 
 Les étapes d'installation sur un site distant sont les mêmes. Cependant, il est nécéssaire de prendre en compte certains points techniques et de sécurité :
 
-- Si la connexion au site n'est pas chiffrée (plain HTTP), il ne faudra pas se connecter à la partie backend avant d'avoir mis en place un certificat SSL, au risque de se faire dérober le mot de passe du backoffice.
+- Si la connexion au site n'est pas chiffrée (plain HTTP), il ne faudra pas se connecter à la partie backoffice avant d'avoir mis en place un certificat SSL, au risque de se faire dérober le mot de passe du backoffice.
 
 - Si l'hébergeur ne donne pas d'accès SSH au serveur, il faudra produire le dossier vendor localement (avec composer), puis le téléverser vers le serveur via FTP.
 
