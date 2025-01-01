@@ -38,4 +38,15 @@ L'ajout et la modification se font par l'intermédiaire d'un formulaire, pré-re
 
 Message de succès après modification d'une playlist.
 
+### Backoffice - catégories
+
+![categories](https://github.com/user-attachments/assets/cf9dcae2-0e02-4a31-9239-45fc5318245c)
+
+La page de gestion des catégories permet de réaliser 2 actions : ajouter et supprimer une catégorie
+
+D'abord, le formulaire a un seul champ en haut de page sert à ajouter une catégorie, le nom de celle-ci doit être unique.
+
+Le bouton rouge avec l'icône de corbeille permet de supprimer une catégorie, mais uniquement si celle-ci n'est référencée par aucune formation.
+
+
 
