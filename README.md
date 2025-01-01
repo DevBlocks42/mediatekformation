@@ -2,6 +2,8 @@
 
 Application web permettant la consultation et la mise en ligne de vidéos d'auto-formation.
 
+Lien de l'application d'origine : https://github.com/CNED-SLAM/mediatekformation
+
 # Présentation des fonctionalités ajoutées
 ## Backoffice
 
