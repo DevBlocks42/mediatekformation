@@ -23,3 +23,9 @@ Il suffit de modifier ou de remplir le formulaire pour que les informations conc
 ![suppr_form](https://github.com/user-attachments/assets/69ff4f76-316f-4a70-bc55-75bf4ac072f1)
 
 Pour supprimer une formation, il faut cliquer sur le bouton rouge avec une icône de corbeille. Un popup de confirmation apparaît, après confirmation, la formation est retirée de la base de données.
+
+### Backoffice - playlists : ajout/modification/suppression
+
+![playlists](https://github.com/user-attachments/assets/72c027fe-219f-4ca7-813f-bb13f77c77d0)
+
+
