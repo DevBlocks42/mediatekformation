@@ -50,6 +50,8 @@ Le bouton rouge avec l'icône de corbeille permet de supprimer une catégorie, m
 
 # Installation
 
+## Installation locale
+
 Pour installer cette application web, il est nécéssaire d'avoir un serveur web d'installé sur sa machine, exemple : LAMP ou WAMP serveur.
 
 Une fois installé, il faut importer la base de données au niveau du SGBD, on peut utiliser phpmyadmin ou l'interface de commande MySQL/Mariadb pour cela.
@@ -61,6 +63,16 @@ Une fois installé, il faut importer la base de données au niveau du SGBD, on p
 Le dossier vendor devrait être construit.
 
 Dernière étape : modifier la chaîne de connexion contenue dans le fichier .env en racine du projet avec les bonnes informations de connexion à la base de données.
+
+Le site devrait normalement être opérationnel.
+
+## Installation distante
+
+Les étapes d'installation sur un site distant sont les mêmes. Cependant, il est nécéssaire de prendre en compte certains points techniques et de sécurité :
+
+- Si la connexion au site n'est pas chiffrée (plain HTTP), il ne faudra pas se connecter à la partie backend avant d'avoir mis en place un certificat SSL, au risque de se faire dérober le mot de passe du backoffice.
+
+- Si l'hébergeur ne donne pas d'accès SSH au serveur, il faudra produire le dossier vendor localement (avec composer), puis le téléverser vers le serveur via FTP.
 
 
 
