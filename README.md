@@ -28,4 +28,14 @@ Pour supprimer une formation, il faut cliquer sur le bouton rouge avec une icôn
 
 ![playlists](https://github.com/user-attachments/assets/72c027fe-219f-4ca7-813f-bb13f77c77d0)
 
+L'index des playlists permet de réaliser 3 actions : Ajouter, modifier ou supprimer une playlist.
+
+![ajoutmodif_playlist](https://github.com/user-attachments/assets/3bf61ca5-e4e6-4340-8b43-3622db120e51)
+
+L'ajout et la modification se font par l'intermédiaire d'un formulaire, pré-rempli dans le cas d'une modification. Une fois soumis, les changements sont appliqués à la base de données.
+
+![modif_pl_success](https://github.com/user-attachments/assets/4b27e3a6-3907-4aad-98b0-ad82f010dfde)
+
+Message de succès après modification d'une playlist.
+
 
