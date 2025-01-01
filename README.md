@@ -48,5 +48,19 @@ D'abord, le formulaire a un seul champ en haut de page sert à ajouter une caté
 
 Le bouton rouge avec l'icône de corbeille permet de supprimer une catégorie, mais uniquement si celle-ci n'est référencée par aucune formation.
 
+# Installation
+
+Pour installer cette application web, il est nécéssaire d'avoir un serveur web d'installé sur sa machine, exemple : LAMP ou WAMP serveur.
+
+Une fois installé, il faut importer la base de données au niveau du SGBD, on peut utiliser phpmyadmin ou l'interface de commande MySQL/Mariadb pour cela.
+
+À ce stade, l'application est preque prête, il faut cependant installer tous les bundles et extensions de Symfony et PHP, pour cela on utilise composer : 
+
+  composer install
+
+Le dossier vendor devrait être construit.
+
+Dernière étape : modifier la chaîne de connexion contenue dans le fichier .env en racine du projet avec les bonnes informations de connexion à la base de données.
+
 
 
