@@ -6,7 +6,7 @@ Lien de l'application d'origine : https://github.com/CNED-SLAM/mediatekformation
 
 Lien pour tester l'application en direct : https://mediatek-formations.42web.io/
 
-# Présentation des fonctionalités ajoutées
+# Présentation des fonctionnalités ajoutées
 ## Backoffice
 
 La partie appellée "backoffice" est la zone du site permettant à l'administrateur de gérer les formations, les playlists et les catégories.
